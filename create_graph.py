@@ -22,11 +22,7 @@ class Graph(object):
         G.edge_attr['fontsize'] = 10
 
         for vertex in self.vertices:
-            if vertex.type == 'trailhead':
-                color = 'green'
-            else:
-                color = 'black'
-            G.add_node(vertex.name, color=color)
+            G.add_node(vertex.name)
 
         for edge in self.edges:
             label = '{0}: {1}'.format(edge.trail_name, edge.distance)
@@ -76,6 +72,7 @@ if __name__ == "__main__":
                     v_name = name
 
                 v = Vertex(v_name, kind[:-1])
+                g.add_vertex(v)
                 trail_vertex_locations[v] = loc
 
         sorted_trail_items = sorted(trail_vertex_locations.items(), key=operator.itemgetter(1))
@@ -88,5 +85,9 @@ if __name__ == "__main__":
                 g.add_edge(e)
 
             last_v = v
+
+    print("Vertices Found:")
+    for v in sorted(g.vertices, key=lambda vert: (vert.type, vert.name)):
+        print("{0}:\t{1}".format(v.type, v.name))
 
     g.visualize()

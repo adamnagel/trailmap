@@ -17,11 +17,17 @@ Distances are in miles.
 
 Let's try it.
 
+TODO:
+- What if two trails intersect twice, as with Maddron Bald and Albright Grove Loop?
+- What's the effect of things with zero distance? Should we take such sets and make sure they connect to the same other non-zero distance nodes?
+- Consolidate vertices if they already exist (see Cosby Campground which is created several times).
 
 Trail Data Resources:
 https://en.wikipedia.org/wiki/Maddron_Bald_Trail
 https://www.nps.gov/grsm/planyourvisit/upload/GSMNP-Map_JUNE14-complete4-2.pdf
 https://en.wikipedia.org/wiki/Snake_Den_Ridge_Trail
+https://en.wikipedia.org/wiki/Lower_Mount_Cammerer_Trail
+http://www.summitpost.org/luftee-knob/401884
 
 Graph Resources:
 http://www.graphviz.org/pdf/neatoguide.pdf
