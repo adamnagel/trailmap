@@ -21,14 +21,19 @@ class Graph(object):
         G.node_attr['shape'] = 'box'
         G.edge_attr['fontsize'] = 10
 
-        nodelist = [v.name for v in self.vertices]
-        G.add_nodes_from(nodelist)
+        for vertex in self.vertices:
+            if vertex.type == 'trailhead':
+                color = 'green'
+            else:
+                color = 'black'
+            G.add_node(vertex.name, color=color)
+
         for edge in self.edges:
-            label = "{0}: {1}".format(edge.trail_name, edge.distance)
+            label = '{0}: {1}'.format(edge.trail_name, edge.distance)
             G.add_edge(edge.point1.name, edge.point2.name, label=label)
 
         G.layout(prog='neato')
-        G.draw('file.png')
+        G.draw('trailmap.png')
 
 
 class Vertex(object):
@@ -56,30 +61,32 @@ if __name__ == "__main__":
     for t_name, t_data in iteritems(data['trails']):
         trail_vertex_locations = dict()
 
-        ### Create vertices
-        for key in ['landmarks', 'campgrounds', 'trailheads']:
-            if key in t_data and t_data[key] is not None:
-                for v_name, loc in iteritems(t_data[key]):
-                    trail_vertex_locations[v_name] = loc
+        # Create vertices from key points
+        for kind, values in iteritems(t_data):
+            if values is None:
+                continue
 
-        for other_t_name, loc in iteritems(t_data['intersections']):
-            # Name intersection by joining the names, alphabetically
-            sorted_names = sorted([t_name, other_t_name])
-            v_name = "{0} intersects {1}".format(sorted_names[0], sorted_names[1])
-            trail_vertex_locations[v_name] = loc
+            v_name = None
+            for name, loc in iteritems(values):
+                # Intersections have a special naming scheme. Otherwise, just use the name.
+                if kind == 'intersections':
+                    sorted_names = sorted([t_name, name])  # 'name' is other trail's name
+                    v_name = "{0} intersects {1}".format(sorted_names[0], sorted_names[1])
+                else:
+                    v_name = name
+
+                v = Vertex(v_name, kind[:-1])
+                trail_vertex_locations[v] = loc
 
         sorted_trail_items = sorted(trail_vertex_locations.items(), key=operator.itemgetter(1))
-
-        my_vertices = list()
-        for idx, item in enumerate(sorted_trail_items):
-            v = Vertex(item[0], 'thing')
-            g.add_vertex(v)
-            my_vertices.append(v)
-
+        last_v = None
+        for idx, v in enumerate(sorted_trail_items):
             if idx != 0:
-                e = Edge(my_vertices[idx - 1], my_vertices[idx],
+                e = Edge(last_v[0], v[0],
                          t_name,
                          sorted_trail_items[idx][1] - sorted_trail_items[idx - 1][1])
                 g.add_edge(e)
+
+            last_v = v
 
     g.visualize()

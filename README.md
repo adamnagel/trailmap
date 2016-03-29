@@ -22,3 +22,7 @@ Trail Data Resources:
 https://en.wikipedia.org/wiki/Maddron_Bald_Trail
 https://www.nps.gov/grsm/planyourvisit/upload/GSMNP-Map_JUNE14-complete4-2.pdf
 https://en.wikipedia.org/wiki/Snake_Den_Ridge_Trail
+
+Graph Resources:
+http://www.graphviz.org/pdf/neatoguide.pdf
+http://networkx.github.io
