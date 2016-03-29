@@ -57,30 +57,29 @@ if __name__ == "__main__":
         trail_vertex_locations = dict()
 
         ### Create vertices
-        for kind, values in iteritems(t_data):
-            if values is None:
-                continue
+        for key in ['landmarks', 'campgrounds', 'trailheads']:
+            if key in t_data and t_data[key] is not None:
+                for v_name, loc in iteritems(t_data[key]):
+                    trail_vertex_locations[v_name] = loc
 
-            for v_raw_name, loc in iteritems(values):
-                if kind == 'intersections':
-                    # Name intersection by joining the names, alphabetically
-                    sorted_names = sorted([t_name, v_raw_name])
-                    v_name = "{0} intersects {1}".format(sorted_names[0], sorted_names[1])
-                else:
-                    v_name = v_raw_name
-
-            v = Vertex(v_name, kind[:-1])
-            g.add_vertex(v)
-            trail_vertex_locations[v] = loc
+        for other_t_name, loc in iteritems(t_data['intersections']):
+            # Name intersection by joining the names, alphabetically
+            sorted_names = sorted([t_name, other_t_name])
+            v_name = "{0} intersects {1}".format(sorted_names[0], sorted_names[1])
+            trail_vertex_locations[v_name] = loc
 
         sorted_trail_items = sorted(trail_vertex_locations.items(), key=operator.itemgetter(1))
-        last_v = None
-        for idx, v in enumerate(sorted_trail_items):
+
+        my_vertices = list()
+        for idx, item in enumerate(sorted_trail_items):
+            v = Vertex(item[0], 'thing')
+            g.add_vertex(v)
+            my_vertices.append(v)
+
             if idx != 0:
-                e = Edge(last_v[0], v[0], t_name,
+                e = Edge(my_vertices[idx - 1], my_vertices[idx],
+                         t_name,
                          sorted_trail_items[idx][1] - sorted_trail_items[idx - 1][1])
                 g.add_edge(e)
 
-            last_v = v
-
-g.visualize()
+    g.visualize()

@@ -27,6 +27,9 @@
         "Gabes Mountain Trail": 1.2,
         "Snake Den Ridge Trail": 7.2,
         "Appalachian Trail": 7.9
+      },
+      "trailheads": {
+        "Maddron Bald Trailhead": 0.0
       }
     },
     "Snake Den Ridge Trail": {
