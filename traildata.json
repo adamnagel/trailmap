@@ -1,0 +1,52 @@
+{
+  "trails": {
+    "Gabes Mountain Trail": {
+      "landmarks": {
+        "Hen Wallow Falls": 4.4
+      },
+      "campgrounds": {
+        "34": 2.4
+      },
+      "intersections": {
+        "Maddron Bald Trail": 0.0
+      },
+      "trailheads": {
+        "Cosby Campground": 6.6
+      }
+    },
+    "Maddron Bald Trail": {
+      "landmarks": {
+        "Baxter Road": 0.0,
+        "Baxter Cabin": 0.7,
+        "Maddron Bald": 6.45
+      },
+      "campgrounds": {
+        "29": 5.7
+      },
+      "intersections": {
+        "Gabes Mountain Trail": 1.2,
+        "Snake Den Ridge Trail": 7.2,
+        "Appalachian Trail": 7.9
+      }
+    },
+    "Snake Den Ridge Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Maddron Bald Trail": 0.0
+      },
+      "trailheads": {
+        "Cosby Campground": 4.6
+      }
+    }
+  },
+  "trailheads": {
+    "Maddron Bald Trailhead": {
+      "Maddron Bald Trail": "head"
+    },
+    "Cosby Campground": {
+      "Snake Den Ridge Trail": "tail",
+      "Gabes Mountain Trail": "tail"
+    }
+  }
+}
