@@ -1,0 +1,33 @@
+{
+    "trails": {
+        "Nature Center Connecting Trail": {
+
+        },
+        "Hungry Hawk": {
+            "trailheads": {
+                "Nature Center Trailhead": 0.0
+            }
+        },
+        "Harpeth Woods Trail": {
+            "trailheads": {
+                "Nature Center Trailhead": 0.0,
+                "Natchez Trace Trailhead": 0.5,
+                "Owl Hollow Trailhead": 1.5
+            },
+            "intersections": {
+                "Owl Hollow Trail": 1.4
+            },
+            "landmarks": {
+                "Quarry": 1.0
+            }
+        },
+        "Owl Hollow Trail": {
+            "trailheads": {
+                "Owl Hollow Trailhead": 0.0
+            },
+            "intersections": {
+                "Harpeth Woods Trail": 0.0
+            }
+        }
+    }
+}

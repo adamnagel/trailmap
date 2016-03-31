@@ -1,0 +1,26 @@
+{
+    "trails": {
+        "Warner Woods Trail": {
+            "trailheads": {
+                "Belle Meade Staircase": 0.0,
+                "Belle Meade Staircase 2": 2.5
+            },
+            "intersections": {
+                "Cane Connector Trail": 2.0
+            }
+        },
+        "Cane Connector Trail": {
+            "trailheads": {
+                "Deep Well Trailhead": 0.0
+            },
+            "intersections": {
+                "Warner Woods Trail": 0.6
+            }
+        },
+        "Mossy Ridge Trail": {
+            "trailheads": {
+
+            }
+        }
+    }
+}

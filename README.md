@@ -23,6 +23,10 @@ TODO:
 - Consolidate vertices if they already exist (see Cosby Campground which is created several times).
 - What if a vertex has multiple types?
 - Look for a de-pluralize library
+- What if the trail loops back to the same trailhead, as with the Percy Warner loops?
+- What about forked trails like Percy Warner's Cane Connector Trail?
+- If a trail is a loop, which direction should it go? Let's say clockwise.
+- What about trails that overlap, such as those in Percy Warner?
 
 Trail Data Resources:
 https://en.wikipedia.org/wiki/Maddron_Bald_Trail
