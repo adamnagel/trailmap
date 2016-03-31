@@ -2,6 +2,9 @@ import json
 from six import iteritems
 import operator
 import pygraphviz as pgv
+import argparse
+import sys
+import os
 
 
 class Graph(object):
@@ -15,7 +18,7 @@ class Graph(object):
     def add_edge(self, edge):
         self.edges.append(edge)
 
-    def visualize(self):
+    def render(self, name):
         G = pgv.AGraph()
         G.graph_attr['overlap'] = 'scale'
         G.node_attr['shape'] = 'box'
@@ -29,7 +32,7 @@ class Graph(object):
             G.add_edge(edge.point1.name, edge.point2.name, label=label)
 
         G.layout(prog='neato')
-        G.draw('trailmap.png')
+        G.draw('{0}.png'.format(name))
 
 
 class Vertex(object):
@@ -46,8 +49,8 @@ class Edge(object):
         self.trail_name = trail_name
 
 
-if __name__ == "__main__":
-    with open('traildata.json') as f:
+def ParseTrailDefinition(filename):
+    with open(filename) as f:
         data = json.load(f)
 
     # Now we want to convert this to a graph.
@@ -90,4 +93,18 @@ if __name__ == "__main__":
     for v in sorted(g.vertices, key=lambda vert: (vert.type, vert.name)):
         print("{0}:\t{1}".format(v.type, v.name))
 
-    g.visualize()
+    basename = os.path.splitext(filename)[0]
+    g.render(basename)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Process trail definitions into a graph')
+    parser.add_argument('trail_definition_files', metavar='file', type=str,
+                        nargs='+', help='Trail definition file to parse')
+
+    args = parser.parse_args()
+    print (args.trail_definition_files)
+
+    for filename in args.trail_definition_files:
+        ParseTrailDefinition(filename)
+

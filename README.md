@@ -21,6 +21,8 @@ TODO:
 - What if two trails intersect twice, as with Maddron Bald and Albright Grove Loop?
 - What's the effect of things with zero distance? Should we take such sets and make sure they connect to the same other non-zero distance nodes?
 - Consolidate vertices if they already exist (see Cosby Campground which is created several times).
+- What if a vertex has multiple types?
+- Look for a de-pluralize library
 
 Trail Data Resources:
 https://en.wikipedia.org/wiki/Maddron_Bald_Trail
