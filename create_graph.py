@@ -19,7 +19,7 @@ class Graph(object):
         self.edges.append(edge)
 
     def render(self, name):
-        G = pgv.AGraph()
+        G = pgv.AGraph(strict=False)
         G.graph_attr['overlap'] = 'scale'
         G.node_attr['shape'] = 'box'
         G.edge_attr['fontsize'] = 10
@@ -33,6 +33,7 @@ class Graph(object):
 
         G.layout(prog='neato')
         G.draw('{0}.png'.format(name))
+        G.write('{0}.dot'.format(name))
 
 
 class Vertex(object):
@@ -61,7 +62,11 @@ def ParseTrailDefinition(filename):
         trail_vertex_locations = dict()
 
         # Create vertices from key points
+        loop_distance = None
         for kind, values in iteritems(t_data):
+            if kind == "loop":  # Special keyword
+                loop_distance = values
+                continue
             if values is None:
                 continue
 
@@ -79,6 +84,7 @@ def ParseTrailDefinition(filename):
                 trail_vertex_locations[v] = loc
 
         sorted_trail_items = sorted(trail_vertex_locations.items(), key=operator.itemgetter(1))
+
         last_v = None
         for idx, v in enumerate(sorted_trail_items):
             if idx != 0:
@@ -88,6 +94,13 @@ def ParseTrailDefinition(filename):
                 g.add_edge(e)
 
             last_v = v
+
+        if loop_distance is not None:
+            v_origin = sorted_trail_items[0]
+            e = Edge(v_origin[0], last_v[0],
+                     t_name,
+                     loop_distance - last_v[1])
+            g.add_edge(e)
 
     print("Vertices Found:")
     for v in sorted(g.vertices, key=lambda vert: (vert.type, vert.name)):
@@ -107,4 +120,3 @@ if __name__ == "__main__":
 
     for filename in args.trail_definition_files:
         ParseTrailDefinition(filename)
-

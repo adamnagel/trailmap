@@ -1,26 +1,50 @@
 {
-    "trails": {
-        "Warner Woods Trail": {
-            "trailheads": {
-                "Belle Meade Staircase": 0.0,
-                "Belle Meade Staircase 2": 2.5
-            },
-            "intersections": {
-                "Cane Connector Trail": 2.0
-            }
-        },
-        "Cane Connector Trail": {
-            "trailheads": {
-                "Deep Well Trailhead": 0.0
-            },
-            "intersections": {
-                "Warner Woods Trail": 0.6
-            }
-        },
-        "Mossy Ridge Trail": {
-            "trailheads": {
-
-            }
-        }
+  "trails": {
+    "Belle Meade Steps": {
+      "trailheads": {
+        "Belle Meade Trailhead": 0.0
+      },
+      "intersections": {
+        "Warner Woods Trail": 0.2
+      }
+    },
+    "Warner Woods Trail": {
+      "intersections": {
+        "Cane Connector Trail to Warner Woods Trail": 0.0,
+        "Belle Meade Steps": 1.7
+      },
+      "loop": 2.3
+    },
+    "Cane Connector Trail to Warner Woods Trail": {
+      "intersections": {
+        "Cane Connector Trail": 0.0,
+        "Warner Woods Trail": 0.1
+      }
+    },
+    "Cane Connector Trail": {
+      "trailheads": {
+        "Deep Well Trailhead": 0.0
+      },
+      "intersections": {
+        "Cane Connector Trail to Warner Woods Trail": 0.1,
+        "Cane Connector Trail to Mossy Ridge Trail": 0.1
+      }
+    },
+    "Cane Connector Trail to Mossy Ridge Trail": {
+      "intersections": {
+        "Mossy Ridge Trail": 0.0,
+        "Cane Connector Trail": 0.1
+      }
+    },
+    "Mossy Ridge Trail": {
+      "intersections": {
+        "Cane Connector Trail to Mossy Ridge Trail": 2.5
+      },
+      "trailheads": {
+        "Highway 100 Trailhead": 0.0,
+        "Middle Trailhead": 1.4
+      },
+      "loop": 4.2
     }
+  }
 }

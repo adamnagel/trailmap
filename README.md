@@ -38,3 +38,10 @@ http://www.summitpost.org/luftee-knob/401884
 Graph Resources:
 http://www.graphviz.org/pdf/neatoguide.pdf
 http://networkx.github.io
+
+## Stuff I Decided
+
+### What if a trail is a loop?
+Its "direction" should be clockwise from the westernmost entry point.
+
+The point where the trail completes the loop should be registered as "loop".
