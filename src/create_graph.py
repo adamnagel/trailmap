@@ -1,53 +1,10 @@
 import json
 from six import iteritems
 import operator
-import pygraphviz as pgv
 import argparse
 import sys
 import os
-
-
-class Graph(object):
-    def __init__(self):
-        self.vertices = list()
-        self.edges = list()
-
-    def add_vertex(self, vertex):
-        self.vertices.append(vertex)
-
-    def add_edge(self, edge):
-        self.edges.append(edge)
-
-    def render(self, name):
-        G = pgv.AGraph(strict=False)
-        G.graph_attr['overlap'] = 'scale'
-        G.node_attr['shape'] = 'box'
-        G.edge_attr['fontsize'] = 10
-
-        for vertex in self.vertices:
-            G.add_node(vertex.name)
-
-        for edge in self.edges:
-            label = '{0}: {1}'.format(edge.trail_name, edge.distance)
-            G.add_edge(edge.point1.name, edge.point2.name, label=label)
-
-        G.layout(prog='neato')
-        G.draw('{0}.png'.format(name))
-        G.write('{0}.dot'.format(name))
-
-
-class Vertex(object):
-    def __init__(self, name, type):
-        self.name = name
-        self.type = type
-
-
-class Edge(object):
-    def __init__(self, point1, point2, trail_name, distance):
-        self.point1 = point1
-        self.point2 = point2
-        self.distance = distance
-        self.trail_name = trail_name
+from graphtools.graph import Graph, Edge, Vertex
 
 
 def ParseTrailDefinition(filename):
@@ -70,7 +27,6 @@ def ParseTrailDefinition(filename):
             if values is None:
                 continue
 
-            v_name = None
             for name, loc in iteritems(values):
                 # Intersections have a special naming scheme. Otherwise, just use the name.
                 if kind == 'intersections':
