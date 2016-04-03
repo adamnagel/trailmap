@@ -3,53 +3,21 @@ from graphtools.graph import Graph, Edge, Vertex
 import os
 import unittest
 import json
-
-
-def Convert(trail_g):
-    rtn = dict()
-    rtn['nvertices'] = len(trail_g.vertices)
-    rtn['nedges'] = len(trail_g.edges)
-    rtn['directed'] = False
-    rtn['degree'] = []
-    rtn['edges'] = []
-
-    for i, v in enumerate(trail_g.vertices):
-        # Find the outdegree (number of edges for this vertex)
-        outdegree = sum([1 for e in trail_g.edges
-                         if e.point1.name == v.name or e.point2.name == v.name])
-        rtn['degree'].append(outdegree)
-
-        edges = []
-        for e in trail_g.edges:
-            if e.point1.name == v.name:
-                edge = {
-                    'y': trail_g.vertices.index(e.point2),
-                    'weight': e.distance
-                }
-                edges.append(edge)
-            elif e.point2.name == v.name:
-                edge = {
-                    'y': trail_g.vertices.index(e.point1),
-                    'weight': e.distance
-                }
-                edges.append(edge)
-
-        rtn['edges'].append(edges)
-
-    # print (json.dumps(rtn, indent=2))
-    return rtn
+import time
 
 
 def Dijkstra(G, s, t):
     print ('Dijkstra from:\n\t{}\n\t\tto\n\t{}'.format(s, t))
     print
 
+    start = time.time()
+
     intree = [False for i in range(G['nvertices'])]
     distance = [float('inf') for i in range(G['nvertices'])]
     parent = [-1 for i in range(G['nvertices'])]
-    print (intree)
-    print (distance)
-    print (parent)
+    # print (intree)
+    # print (distance)
+    # print (parent)
 
     distance[s] = 0
     v = s
@@ -71,9 +39,11 @@ def Dijkstra(G, s, t):
                 dist = distance[i]
                 v = i
 
-    print (distance)
-    print (parent)
-    print (distance[t])
+    end = time.time()
+    print ('Dijkstra time: {0:.3f}ms'.format((end - start) * 1000))
+    # print (distance)
+    # print (parent)
+    # print (distance[t])
 
     path = [t]
     iter = t
@@ -82,7 +52,7 @@ def Dijkstra(G, s, t):
         path.append(iter)
     print(path)
 
-    return distance[t]
+    return path
 
 
 class TestMe(unittest.TestCase):
@@ -90,7 +60,11 @@ class TestMe(unittest.TestCase):
         with open(os.path.join('trailmaps', 'percywarner.pkl')) as f:
             g = pickle.load(f)
 
-        newg = Convert(g)
+        start = time.time()
+        # newg = Convert(g)
+        newg = g.ToSkiena()
+        end = time.time()
+        print('Conversion time: {0:.3f}ms'.format((end - start) * 1000))
         # print (json.dumps(newg, indent=2))
 
         all_v_names = [v.name for v in g.vertices]
@@ -100,7 +74,9 @@ class TestMe(unittest.TestCase):
 
         print
         print v_names[0], 'to', v_names[-1]
-        Dijkstra(newg, all_v_names.index(v_names[0]), all_v_names.index(v_names[-1]))
+        dist = Dijkstra(newg, all_v_names.index(v_names[0]), all_v_names.index(v_names[-1]))
+
+        self.assertSequenceEqual(dist, [9, 3, 4, 12, 11, 0, 1])
 
 
 if __name__ == '__main__':

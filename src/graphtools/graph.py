@@ -30,11 +30,15 @@ class Graph(object):
     def __init__(self):
         self.vertices = list()
         self.edges = list()
+        self._uptodate = False
+        self._skiena = None
 
     def add_vertex(self, vertex):
+        self._uptodate = False
         self.vertices.append(vertex)
 
     def add_edge(self, edge):
+        self._uptodate = False
         self.edges.append(edge)
 
     def render(self, name):
@@ -70,4 +74,42 @@ class Graph(object):
 
             json.dump(d, f, indent=2)
 
+        # Create Skiena representation
+        self._skiena = self.ToSkiena()
+        self._uptodate = True
 
+    def ToSkiena(self):
+        if self._uptodate:
+            return self._skiena
+
+        rtn = dict()
+        rtn['nvertices'] = len(self.vertices)
+        rtn['nedges'] = len(self.edges)
+        rtn['directed'] = False
+        rtn['degree'] = []
+        rtn['edges'] = []
+
+        for i, v in enumerate(self.vertices):
+            # Find the outdegree (number of edges for this vertex)
+            outdegree = sum([1 for e in self.edges
+                             if e.point1.name == v.name or e.point2.name == v.name])
+            rtn['degree'].append(outdegree)
+
+            edges = []
+            for e in self.edges:
+                if e.point1.name == v.name:
+                    edge = {
+                        'y': self.vertices.index(e.point2),
+                        'weight': e.distance
+                    }
+                    edges.append(edge)
+                elif e.point2.name == v.name:
+                    edge = {
+                        'y': self.vertices.index(e.point1),
+                        'weight': e.distance
+                    }
+                    edges.append(edge)
+
+            rtn['edges'].append(edges)
+
+        return rtn
