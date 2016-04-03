@@ -1,0 +1,23 @@
+{
+  "name": "trailmap",
+  "homepage": "https://github.com/adamnagel/trailmap",
+  "authors": [
+    "Adam Nagel <adam.nagel+git@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~1.2.5",
+    "angular": "~1.5.3"
+  }
+}

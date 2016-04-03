@@ -2,3 +2,5 @@
 *.png
 *.dot
 venv
+*.pyc
+src/server/static/bower_components
