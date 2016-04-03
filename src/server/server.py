@@ -7,6 +7,7 @@ app = Flask(__name__)
 path_thisfile = os.path.dirname(__file__)
 path_static = os.path.join(path_thisfile, 'static')
 print ('Static files being served from: {}'.format(path_static))
+path_trailmaps = os.path.join(path_thisfile, '..', '..', 'trailmaps')
 
 
 @app.route('/')
@@ -23,10 +24,15 @@ def static_proxy(path):
 @app.route('/api/list_trailsystems')
 def list_trailsystems():
     rtn = dict()
-    files = glob.glob('../trailmaps/*.json')
-    rtn['trailsystems'] = [os.path.basename(os.path.splitext(f)[0]) for f in files]
+    files = glob.glob(path_trailmaps + '/*.json')
+    rtn['trailsystems'] = [os.path.basename(os.path.splitext(f)[0]) for f in files if not '_render' in f]
 
     return json.dumps(rtn)
+
+
+@app.route('/api/traildata/<trailsystem>')
+def fetch_traildata(trailsystem):
+    return send_from_directory(path_trailmaps, '{}_render.json'.format(trailsystem))
 
 
 if __name__ == '__main__':

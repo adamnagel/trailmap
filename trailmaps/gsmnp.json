@@ -1,138 +1,138 @@
 {
-    "trails": {
-        "Gabes Mountain Trail": {
-            "landmarks": {
-                "Hen Wallow Falls": 4.4
-            },
-            "campgrounds": {
-                "34": 2.4
-            },
-            "intersections": {
-                "Maddron Bald Trail": 0.0
-            },
-            "trailheads": {
-                "Cosby Campground": 6.6
-            }
-        },
-        "Maddron Bald Trail": {
-            "landmarks": {
-                "Baxter Road": 0.0,
-                "Baxter Cabin": 0.7,
-                "Maddron Bald": 6.45
-            },
-            "campgrounds": {
-                "29": 5.7
-            },
-            "intersections": {
-                "Gabes Mountain Trail": 1.2,
-                "Old Settlers Trail": 1.2,
-                "Snake Den Ridge Trail": 7.2,
-                "Appalachian Trail": 7.9
-            },
-            "trailheads": {
-                "Maddron Bald Trailhead": 0.0
-            }
-        },
-        "Snake Den Ridge Trail": {
-            "landmarks": null,
-            "campgrounds": null,
-            "intersections": {
-                "Maddron Bald Trail": 0.0
-            },
-            "trailheads": {
-                "Cosby Campground": 4.6
-            }
-        },
-        "Old Settlers Trail": {
-            "landmarks": null,
-            "campgrounds": {
-                "33": 6.5
-            },
-            "intersections": {
-                "Maddron Bald Trail": 15.8
-            },
-            "trailheads": {
-                "Greenbrier Cove Trailhead": 0.0
-            }
-        },
-        "Low Gap Trail": {
-            "landmarks": null,
-            "campgrounds": null,
-            "intersections": {
-                "Appalachian Trail": 2.5,
-                "Big Creek Trail": 5.0,
-                "Camel Gap Trail": 5.0
-            },
-            "trailheads": {
-                "Cosby Campground": 0.0
-            }
-        },
-        "Lower Mount Cammerer Trail": {
-            "landmarks": null,
-            "campgrounds": {
-                "35": 3.6
-            },
-            "intersections": {
-                "Appalachian Trail": 7.4
-            },
-            "trailheads": {
-                "Cosby Campground": 0.0
-            }
-        },
-        "Mount Cammerer Trail": {
-            "landmarks": {
-                "Mount Cammerer Fire Tower": 0.6
-            },
-            "campgrounds": null,
-            "intersections": {
-                "Appalachian Trail": 0.0
-            },
-            "trailheads": null
-        },
-        "Camel Gap Trail": {
-            "landmarks": null,
-            "campgrounds": null,
-            "intersections": {
-                "Appalachian Trail": 0.0,
-                "Gunter Fork Trail": 4.1,
-                "Low Gap Trail": 1.0
-            },
-            "trailheads": null
-        },
-        "Gunter Fork Trail": {
-            "landmarks": null,
-            "campgrounds": null,
-            "intersections": {
-                "Balsam Mountain Trail": 0.0,
-                "Camel Gap Trail": 4.1
-            },
-            "trailheads": null
-        },
-        "Balsam Mountain Trail": {
-            "landmarks": {
-                "Luftee Knob": 2.5
-            },
-            "campbrounds": null,
-            "intersections": {
-                "Mount Sterling Ridge Trail": 5.8,
-                "Gunter Fork Trail": 4.9,
-                "Appalachian Trail": 0.0
-            },
-            "trailheads": null
-        },
-        "Appalachian Trail": {
-            "landmarks": null,
-            "campgrounds": null,
-            "intersections": {
-                "Balsam Mountain Trail": -3.7,
-                "Maddron Bald Trail": 0.0,
-                "Camel Gap Trail": 2.3,
-                "Low Gap Trail": 4.7,
-                "Mount Cammerer Trail": 6.8,
-                "Lower Mount Cammerer Trail": 9.1,
-                "Chesnut Branch Trail": 10.1
-            },
-            "trailheads": null
-        }
+  "trails": {
+    "Gabes Mountain Trail": {
+      "landmarks": {
+        "Hen Wallow Falls": 4.4
+      },
+      "campgrounds": {
+        "34": 2.4
+      },
+      "intersections": {
+        "Maddron Bald Trail": 0.0
+      },
+      "trailheads": {
+        "Cosby Campground": 6.6
+      }
+    },
+    "Maddron Bald Trail": {
+      "landmarks": {
+        "Baxter Road": 0.0,
+        "Baxter Cabin": 0.7,
+        "Maddron Bald": 6.45
+      },
+      "campgrounds": {
+        "29": 5.7
+      },
+      "intersections": {
+        "Gabes Mountain Trail": 1.2,
+        "Old Settlers Trail": 1.2,
+        "Snake Den Ridge Trail": 7.2,
+        "Appalachian Trail": 7.9
+      },
+      "trailheads": {
+        "Maddron Bald Trailhead": 0.0
+      }
+    },
+    "Snake Den Ridge Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Maddron Bald Trail": 0.0
+      },
+      "trailheads": {
+        "Cosby Campground": 4.6
+      }
+    },
+    "Old Settlers Trail": {
+      "landmarks": null,
+      "campgrounds": {
+        "33": 6.5
+      },
+      "intersections": {
+        "Maddron Bald Trail": 15.8
+      },
+      "trailheads": {
+        "Greenbrier Cove Trailhead": 0.0
+      }
+    },
+    "Low Gap Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Appalachian Trail": 2.5,
+        "Big Creek Trail": 5.0,
+        "Camel Gap Trail": 5.0
+      },
+      "trailheads": {
+        "Cosby Campground": 0.0
+      }
+    },
+    "Lower Mount Cammerer Trail": {
+      "landmarks": null,
+      "campgrounds": {
+        "35": 3.6
+      },
+      "intersections": {
+        "Appalachian Trail": 7.4
+      },
+      "trailheads": {
+        "Cosby Campground": 0.0
+      }
+    },
+    "Mount Cammerer Trail": {
+      "landmarks": {
+        "Mount Cammerer Fire Tower": 0.6
+      },
+      "campgrounds": null,
+      "intersections": {
+        "Appalachian Trail": 0.0
+      },
+      "trailheads": null
+    },
+    "Camel Gap Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Appalachian Trail": 0.0,
+        "Gunter Fork Trail": 4.1,
+        "Low Gap Trail": 1.0
+      },
+      "trailheads": null
+    },
+    "Gunter Fork Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Balsam Mountain Trail": 0.0,
+        "Camel Gap Trail": 4.1
+      },
+      "trailheads": null
+    },
+    "Balsam Mountain Trail": {
+      "landmarks": {
+        "Luftee Knob": 2.5
+      },
+      "campbrounds": null,
+      "intersections": {
+        "Mount Sterling Ridge Trail": 5.8,
+        "Gunter Fork Trail": 4.9,
+        "Appalachian Trail": 0.0
+      },
+      "trailheads": null
+    },
+    "Appalachian Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Balsam Mountain Trail": -3.7,
+        "Maddron Bald Trail": 0.0,
+        "Camel Gap Trail": 2.3,
+        "Low Gap Trail": 4.7,
+        "Mount Cammerer Trail": 6.8,
+        "Lower Mount Cammerer Trail": 9.1,
+        "Chesnut Branch Trail": 10.1
+      },
+      "trailheads": null
     }
+  }
 }

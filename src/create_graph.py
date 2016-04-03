@@ -2,7 +2,6 @@ import json
 from six import iteritems
 import operator
 import argparse
-import sys
 import os
 from graphtools.graph import Graph, Edge, Vertex
 
@@ -75,4 +74,8 @@ if __name__ == "__main__":
     print (args.trail_definition_files)
 
     for filename in args.trail_definition_files:
+        if '_render.json' in filename:
+            continue
+
+        print(filename)
         ParseTrailDefinition(filename)

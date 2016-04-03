@@ -1,4 +1,6 @@
 import pygraphviz as pgv
+import os
+import json
 
 
 class Edge(object):
@@ -8,11 +10,20 @@ class Edge(object):
         self.distance = distance
         self.trail_name = trail_name
 
+    def to_dict(self):
+        return {'point1': self.point1.name,
+                'point2': self.point2.name,
+                'distance': self.distance,
+                'trail_name': self.trail_name}
+
 
 class Vertex(object):
     def __init__(self, name, type):
         self.name = name
         self.type = type
+
+    def to_dict(self):
+        return {'type': self.type}
 
 
 class Graph(object):
@@ -42,3 +53,20 @@ class Graph(object):
         G.layout(prog='neato')
         G.draw('{0}.png'.format(name))
         G.write('{0}.dot'.format(name))
+
+        # Create JSON extract
+        with open('{0}_render.json'.format(name), 'w') as f:
+            d = {'vertices': dict(), 'edges': list()}
+            for v in self.vertices:
+                type = v.type
+                if type not in d['vertices']:
+                    d['vertices'][type] = dict()
+
+                d['vertices'][type][v.name] = v.to_dict()
+
+            for e in self.edges:
+                d['edges'].append(e.to_dict())
+
+            json.dump(d, f, indent=2)
+
+
