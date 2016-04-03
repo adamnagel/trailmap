@@ -4,35 +4,59 @@
     <meta charset="UTF-8">
     <title>Trailmap</title>
 
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/cytoscape/dist/cytoscape.js"></script>
     <script src="js/controllers.js"></script>
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+    <style>
+        #diag {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
 </head>
 <body ng-controller="TrailmapCtrl">
+
+<div class="container" style="fill.min-height:200px;">
+    <div id="diag"></div>
+</div>
 
 <div class="container">
     <div class="row" ng-repeat="(name, data) in trailsystems">
         <h2>{{name}}</h2>
-        <div class="col-sm-6">
-            <h3>Trailheads</h3>
-            <div ng-repeat="(trailhead, trailhead_data) in data.vertices.trailhead">
-                {{trailhead}}
-            </div>
-        </div>
 
-        <div class="col-sm-6">
-            <h3>Landmarks</h3>
-            <div ng-repeat="(landmark, landmark_data) in data.vertices.landmark">
-                {{landmark}}
+        <div>
+            <div class="col-sm-4">
+                <h3>Trailheads</h3>
+
+                <div ng-repeat="(trailhead, trailhead_data) in data.vertices.trailhead">
+                    {{trailhead}}
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <h3>Landmarks</h3>
+
+                <div ng-repeat="(landmark, landmark_data) in data.vertices.landmark">
+                    {{landmark}}
+                </div>
+            </div>
+            <!--{{data | json}}-->
+
+            <div class="col-sm-4">
+                <div id="{{name}}_diagram"></div>
             </div>
         </div>
-        <!--{{data | json}}-->
     </div>
-</div>
 
+</div>
 
 <pre>{{trailsystems | json}}</pre>
 
