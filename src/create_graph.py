@@ -4,7 +4,7 @@ import operator
 import argparse
 import os
 from graphtools.graph import Graph, Edge, Vertex
-
+import pickle
 
 def ParseTrailDefinition(filename):
     with open(filename) as f:
@@ -64,6 +64,9 @@ def ParseTrailDefinition(filename):
     basename = os.path.splitext(filename)[0]
     g.render(basename)
 
+    with open('{}.pkl'.format(basename), 'w') as f:
+        pickle.dump(g, f)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process trail definitions into a graph')
@@ -79,3 +82,4 @@ if __name__ == "__main__":
 
         print(filename)
         ParseTrailDefinition(filename)
+
