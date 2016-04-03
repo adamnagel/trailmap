@@ -4,3 +4,4 @@
 venv
 *.pyc
 src/server/static/bower_components
+trailmaps
