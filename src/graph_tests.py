@@ -15,9 +15,6 @@ def Dijkstra(G, s, t):
     intree = [False for i in range(G['nvertices'])]
     distance = [float('inf') for i in range(G['nvertices'])]
     parent = [-1 for i in range(G['nvertices'])]
-    # print (intree)
-    # print (distance)
-    # print (parent)
 
     distance[s] = 0
     v = s
@@ -41,42 +38,69 @@ def Dijkstra(G, s, t):
 
     end = time.time()
     print ('Dijkstra time: {0:.3f}ms'.format((end - start) * 1000))
-    # print (distance)
-    # print (parent)
-    # print (distance[t])
+
+    results = dict()
+    results['distance'] = distance
+    results['intree'] = intree
+    results['parent'] = parent
 
     path = [t]
     iter = t
     while iter != s:
         iter = parent[iter]
         path.append(iter)
-    print(path)
 
-    return path
+    results['path'] = path
+
+    return results
 
 
 class TestMe(unittest.TestCase):
-    def test_Dijkstra(self):
+    def test_Dijkstra_PercyWarner(self):
         with open(os.path.join('trailmaps', 'percywarner.pkl')) as f:
             g = pickle.load(f)
 
-        start = time.time()
-        # newg = Convert(g)
-        newg = g.ToSkiena()
-        end = time.time()
-        print('Conversion time: {0:.3f}ms'.format((end - start) * 1000))
-        # print (json.dumps(newg, indent=2))
+        g_skiena = g.ToSkiena()
 
-        all_v_names = [v.name for v in g.vertices]
-        v_names = [v.name for v in g.vertices if v.type == 'trailhead']
-        for name in v_names:
-            print (name)
+        v_names = [v.name for v in g.vertices]
+        th_names = [v.name for v in g.vertices if v.type == 'trailhead']
 
-        print
-        print v_names[0], 'to', v_names[-1]
-        dist = Dijkstra(newg, all_v_names.index(v_names[0]), all_v_names.index(v_names[-1]))
+        results = Dijkstra(g_skiena, v_names.index(th_names[0]), v_names.index(th_names[-1]))
 
-        self.assertSequenceEqual(dist, [9, 3, 4, 12, 11, 0, 1])
+        self.assertSequenceEqual(results['path'], [7, 3, 2, 4, 8, 0, 1])
+
+    def test_Dijkstra_GSMNP(self):
+        with open(os.path.join('trailmaps', 'gsmnp.pkl')) as f:
+            g = pickle.load(f)
+
+        g_skiena = g.ToSkiena()
+
+        v_names = [v.name for v in g.vertices]
+        th_names = [v.name for v in g.vertices if v.type == 'trailhead']
+
+        results = Dijkstra(g_skiena, v_names.index(th_names[0]), v_names.index(th_names[-1]))
+
+        self.assertSequenceEqual(results['path'], [25, 24, 18, 6, 7, 5, 3])
+
+    def test_PercyWarner(self):
+        with open(os.path.join('trailmaps', 'percywarner.pkl')) as f:
+            g = pickle.load(f)
+
+        v_names = [v.name for v in g.vertices]
+        print (json.dumps(sorted(v_names), indent=2))
+        self.assertSequenceEqual(sorted(v_names),
+                                 sorted(set(v_names)),
+                                 'Duplicate vertices exist')
+
+    def test_GSMNP(self):
+        with open(os.path.join('trailmaps', 'gsmnp.pkl')) as f:
+            g = pickle.load(f)
+
+        v_names = [v.name for v in g.vertices]
+        print (json.dumps(sorted(v_names), indent=2))
+        self.assertSequenceEqual(sorted(v_names),
+                                 sorted(set(v_names)),
+                                 'Duplicate vertices exist')
 
 
 if __name__ == '__main__':

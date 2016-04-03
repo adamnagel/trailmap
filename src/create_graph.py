@@ -6,6 +6,7 @@ import os
 from graphtools.graph import Graph, Edge, Vertex
 import pickle
 
+
 def ParseTrailDefinition(filename):
     with open(filename) as f:
         data = json.load(f)
@@ -34,8 +35,16 @@ def ParseTrailDefinition(filename):
                 else:
                     v_name = name
 
-                v = Vertex(v_name, kind[:-1])
-                g.add_vertex(v)
+                # Check for existing vertex
+                dupes = [v_ for v_ in g.vertices if v_.name == v_name]
+                if len(dupes) == 1:
+                    v = dupes[0]
+                elif len(dupes) > 1:
+                    raise ValueError('More than 1 instance of vertex name {} found'.format(v_name))
+                else:
+                    v = Vertex(v_name, kind[:-1])
+                    g.add_vertex(v)
+
                 trail_vertex_locations[v] = loc
 
         sorted_trail_items = sorted(trail_vertex_locations.items(), key=operator.itemgetter(1))
@@ -82,4 +91,3 @@ if __name__ == "__main__":
 
         print(filename)
         ParseTrailDefinition(filename)
-
