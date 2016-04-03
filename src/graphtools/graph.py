@@ -52,6 +52,7 @@ class Graph(object):
 
         G.layout(prog='neato')
         G.draw('{0}.png'.format(name))
+        G.draw('{0}.svg'.format(name))
         G.write('{0}.dot'.format(name))
 
         # Create JSON extract

@@ -30,9 +30,14 @@ def list_trailsystems():
     return json.dumps(rtn)
 
 
-@app.route('/api/traildata/<trailsystem>')
+@app.route('/api/<trailsystem>/data')
 def fetch_traildata(trailsystem):
     return send_from_directory(path_trailmaps, '{}_render.json'.format(trailsystem))
+
+
+@app.route('/api/<trailsystem>/svg')
+def fetch_trailgraph_svg(trailsystem):
+    return send_from_directory(path_trailmaps, '{}.svg'.format(trailsystem))
 
 
 if __name__ == '__main__':
