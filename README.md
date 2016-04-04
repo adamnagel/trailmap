@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/adamnagel/trailmap.svg?branch=travis)](https://travis-ci.org/adamnagel/trailmap)
+[![Build Status](https://travis-ci.org/adamnagel/trailmap.svg?branch=master)](https://travis-ci.org/adamnagel/trailmap)
 # trailmap
 
 What should be the vertices (nodes), and what should be the edges?
