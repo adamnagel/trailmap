@@ -1,50 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" ng-app="trailmapApp">
 <head>
-    <meta charset="UTF-8">
-    <title>Trailmap</title>
-
-    <script src="bower_components/jquery/jquery.min.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-    <script src="js/controllers.js"></script>
-
+    <meta charset="utf-8">
+    <title>TrailMap</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="js/controllers.js"></script>
 </head>
 <body ng-controller="TrailmapCtrl">
 
-<div class="container">
-    <div class="row" ng-repeat="(name, data) in trailsystems">
-        <h2>{{name}}</h2>
+<div class="col-md-2">
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Trail System</label>
+        <md-select ng-model="activeTrailsystem">
+            <md-option ng-repeat="(ts, data) in trailsystems" value="{{ts}}">
+                {{ts}}
+            </md-option>
+        </md-select>
+    </md-input-container>
 
-        <div class="row">
-            <div class="col-sm-2">
-                <h3>Trailheads</h3>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Trailhead</label>
+        <md-select ng-model="startPoint">
+            <md-option ng-repeat="(th_name, th_data) in trailsystems[activeTrailsystem].vertices.trailhead"
+                       value="{{th_name}}">
+                {{th_name}}
+            </md-option>
+        </md-select>
+    </md-input-container>
 
-                <div ng-repeat="(trailhead, trailhead_data) in data.vertices.trailhead">
-                    {{trailhead}}
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <h3>Landmarks</h3>
-
-                <div ng-repeat="(landmark, landmark_data) in data.vertices.landmark">
-                    {{landmark}}
-                </div>
-            </div>
-
-            <div class="col-sm-8">
-                <img ng-src="api/{{name}}/svg" width="600"/>
-            </div>
-        </div>
-        <!--{{data | json}}-->
-    </div>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Destination</label>
+        <md-select ng-model="destinationPoint">
+            <md-option ng-repeat="(d_name, d_data) in trailsystems[activeTrailsystem].vertices.landmark"
+                       value="{{d_name}}">
+                {{d_name}}
+            </md-option>
+        </md-select>
+    </md-input-container>
 </div>
 
-
-<pre>{{trailsystems | json}}</pre>
+<pre>{{trailsystems[activeTrailsystem].vertices | json}}</pre>
 
 </body>
 </html>
