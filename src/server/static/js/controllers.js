@@ -22,6 +22,14 @@ trailmapApp.controller('TrailmapCtrl', ['$scope', '$http', function ($scope, $ht
 
         $scope.activeTrailsystem = 'gsmnp';
         $scope.startPoint = 'Cosby Campground';
-        $scope.destinationPoint = '34';
+        $scope.destinationPoint = 'Luftee Knob';
+
+        $scope.navigate = function() {
+            var trailsystem = $scope.activeTrailsystem,
+                startPoint = $scope.startPoint,
+                destinationPoint = $scope.destinationPoint;
+
+
+        };
     });
 }]);

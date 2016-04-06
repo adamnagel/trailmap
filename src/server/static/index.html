@@ -13,38 +13,76 @@
 </head>
 <body ng-controller="TrailmapCtrl">
 
-<div class="col-md-2">
-    <md-input-container class="md-block" flex-gt-sm>
-        <label>Trail System</label>
-        <md-select ng-model="activeTrailsystem">
-            <md-option ng-repeat="(ts, data) in trailsystems" value="{{ts}}">
-                {{ts}}
-            </md-option>
-        </md-select>
-    </md-input-container>
+<div class="col-md-3" style="padding: 16px;">
+    <section class="demo-container md-whiteframe-z1">
+        <md-toolbar class="md-primary" style="padding:16px;">
+            <h2 class="md-flex">Beta</h2>
+        </md-toolbar>
 
-    <md-input-container class="md-block" flex-gt-sm>
-        <label>Trailhead</label>
-        <md-select ng-model="startPoint">
-            <md-option ng-repeat="(th_name, th_data) in trailsystems[activeTrailsystem].vertices.trailhead"
-                       value="{{th_name}}">
-                {{th_name}}
-            </md-option>
-        </md-select>
-    </md-input-container>
+        <md-content md-theme="docs-dark" layout-gt-sm="column" layout-padding>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Trail System</label>
+                <md-select ng-model="activeTrailsystem">
+                    <md-option ng-repeat="(ts, data) in trailsystems" value="{{ts}}">
+                        {{ts}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
 
-    <md-input-container class="md-block" flex-gt-sm>
-        <label>Destination</label>
-        <md-select ng-model="destinationPoint">
-            <md-option ng-repeat="(d_name, d_data) in trailsystems[activeTrailsystem].vertices.landmark"
-                       value="{{d_name}}">
-                {{d_name}}
-            </md-option>
-        </md-select>
-    </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Trailhead</label>
+                <md-select ng-model="startPoint">
+                    <md-option ng-repeat="(th_name, th_data) in trailsystems[activeTrailsystem].vertices.trailhead"
+                               value="{{th_name}}">
+                        {{th_name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Destination</label>
+                <md-select ng-model="destinationPoint">
+                    <md-option ng-repeat="(d_name, d_data) in trailsystems[activeTrailsystem].vertices.landmark"
+                               value="{{d_name}}">
+                        {{d_name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+            <div layout="row" layout-align="center">
+                <md-button class="md-raised md-primary">Navigate</md-button>
+            </div>
+        </md-content>
+    </section>
 </div>
 
-<pre>{{trailsystems[activeTrailsystem].vertices | json}}</pre>
+<div class="col-md-9" style="padding: 16px;">
+    <section class="demo-container md-whiteframe-z1">
+        <md-toolbar class="md-primary" style="padding:16px;">
+            <h2 class="md-flex">Trails</h2>
+        </md-toolbar>
+
+        <md-content md-theme="docs-dark" layout-gt-sm="column" layout-padding>
+            <div ng-cloak>
+                <md-content>
+                    <md-tabs md-dynamic-height md-border-bottom>
+                        <md-tab label="svg">
+                            <md-content class="md-padding">
+                                <img ng-src="api/{{activeTrailsystem}}/svg"
+                                     style="max-width: 100%; max-height: 100%;"/>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="json">
+                            <md-content class="md-padding">
+                                <pre>{{trailsystems[activeTrailsystem].vertices | json}}</pre>
+                            </md-content>
+                        </md-tab>
+                    </md-tabs>
+                </md-content>
+            </div>
+        </md-content>
+    </section>
+</div>
 
 </body>
 </html>
