@@ -29,7 +29,10 @@ trailmapApp.controller('TrailmapCtrl', ['$scope', '$http', function ($scope, $ht
                 startPoint = $scope.startPoint,
                 destinationPoint = $scope.destinationPoint;
 
-
+            $http.get('api/' + trailsystem + '/navigate/' + startPoint + '/' + destinationPoint)
+                .success(function (data) {
+                    $scope.route = data;
+                });
         };
     });
 }]);
