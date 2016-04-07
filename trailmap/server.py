@@ -2,7 +2,7 @@ import glob
 import os
 import json
 from flask import Flask, send_from_directory
-from graph_tests import Dijkstra
+from tests import Dijkstra
 from graphtools.graph import Graph
 import pickle
 
@@ -10,7 +10,7 @@ app = Flask(__name__)
 path_thisfile = os.path.dirname(__file__)
 path_static = os.path.join(path_thisfile, 'static')
 print ('Static files being served from: {}'.format(path_static))
-path_trailmaps = os.path.join(path_thisfile, '..', 'trailmaps')
+path_trailmaps = os.path.join(path_thisfile, '..', 'data')
 
 
 @app.route('/')

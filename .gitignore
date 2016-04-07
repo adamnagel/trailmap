@@ -3,5 +3,6 @@
 *.dot
 venv
 *.pyc
-src/static/bower_components
+trailmap/static/bower_components
 trailmaps
+data

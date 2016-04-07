@@ -8,5 +8,5 @@ addons:
       - graphviz
 
 install: "pip install -r requirements.txt"
-before_script: "find trailmaps -name *.json | xargs python src/create_graph.py"
-script: nosetests src/graph_tests.py
+before_script: "find trailmaps -name *.json | xargs python trailmap/build_trail_graphs.py"
+script: nosetests trailmap/tests.py
