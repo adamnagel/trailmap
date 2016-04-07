@@ -4,7 +4,8 @@ import os
 import unittest
 import json
 
-path_traildata = os.path.join('..', 'data')
+path_thisfile = os.path.dirname(os.path.realpath(__file__))
+path_traildata = os.path.join(path_thisfile, '..', 'data')
 
 class TestMe(unittest.TestCase):
     def setUp(self):
