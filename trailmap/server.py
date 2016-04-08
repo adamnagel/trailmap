@@ -2,7 +2,7 @@ import glob
 import os
 import json
 from flask import Flask, send_from_directory
-from graphtools.graph import Dijkstra
+from graphtools.dijkstra import Dijkstra
 import pickle
 
 app = Flask(__name__)

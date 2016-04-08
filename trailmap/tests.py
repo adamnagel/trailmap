@@ -1,11 +1,12 @@
 import pickle
-from graphtools.graph import Dijkstra
+from graphtools.dijkstra import Dijkstra
 import os
 import unittest
 import json
 
 path_thisfile = os.path.dirname(os.path.realpath(__file__))
 path_traildata = os.path.join(path_thisfile, '..', 'data')
+
 
 class TestMe(unittest.TestCase):
     def setUp(self):
@@ -23,6 +24,7 @@ class TestMe(unittest.TestCase):
         results = Dijkstra(g_skiena, v_names.index(th_names[0]), v_names.index(th_names[-1]))
 
         self.assertSequenceEqual(results['path'], [7, 3, 2, 4, 8, 0, 1])
+        print(results['path'])
 
     def test_Dijkstra_GSMNP(self):
         with open(os.path.join(path_traildata, 'gsmnp.pkl')) as f:
@@ -36,6 +38,20 @@ class TestMe(unittest.TestCase):
         results = Dijkstra(g_skiena, v_names.index(th_names[0]), v_names.index(th_names[-1]))
 
         self.assertSequenceEqual(results['path'], [25, 24, 18, 6, 7, 5, 3])
+
+    def test_Dijkstra_WithPath(self):
+        with open(os.path.join(path_traildata, 'edwinwarner.pkl')) as f:
+            g = pickle.load(f)
+
+        results = g.ShortestPath('Owl Hollow Trailhead', 'Quarry')
+        print(json.dumps(results, indent=2))
+
+        expected = [
+            {"distance": 0, "point": "Owl Hollow Trailhead"},
+            {"distance": 0.0, "point": "Harpeth Woods Trail intersects Owl Hollow Trail"},
+            {"distance": 0.3999999999999999, "point": "Quarry"}
+        ]
+        self.assertSequenceEqual(results, expected)
 
     def test_PercyWarner(self):
         with open(os.path.join(path_traildata, 'percywarner.pkl')) as f:
