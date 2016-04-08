@@ -47,13 +47,8 @@ def navigate(trailsystem, src, dst):
     with open(os.path.join(path_trailmaps, '{}.pkl'.format(trailsystem))) as f:
         g = pickle.load(f)
 
-    v_names = [v.name for v in g.vertices]
-
-    results = Dijkstra(g.ToSkiena(), v_names.index(src), v_names.index(dst))
-    path = reversed(results['path'])
-    path_asnames = [v_names[i] for i in path]
-
-    return json.dumps(path_asnames)
+    results = g.ShortestPath(src, dst)
+    return json.dumps(results)
 
 
 if __name__ == '__main__':
