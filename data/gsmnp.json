@@ -95,7 +95,8 @@
       "intersections": {
         "Appalachian Trail": 0.0,
         "Gunter Fork Trail": 4.1,
-        "Low Gap Trail": 1.0
+        "Low Gap Trail": 5.1,
+        "Big Creek Trail": 5.1
       },
       "trailheads": null
     },
@@ -112,7 +113,7 @@
       "landmarks": {
         "Luftee Knob": 2.5
       },
-      "campbrounds": null,
+      "campgrounds": null,
       "intersections": {
         "Mount Sterling Ridge Trail": 5.8,
         "Gunter Fork Trail": 4.9,
@@ -120,8 +121,131 @@
       },
       "trailheads": null
     },
-    "Appalachian Trail": {
+    "Ramsey Cascades Trail": {
+      "landmarks": {
+        "Ramsey Cascades": 4.0
+      },
+      "campgrounds": null,
+      "intersections": null,
+      "trailheads": {
+        "Ramsey Cascades Trailhead": 0.0
+      }
+    },
+    "Big Creek Trail": {
       "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Swallow Fork Trail": 0.1,
+        "Low Gap Trail": 0.0
+      },
+      "trailheads": {
+        "Big Creek Trailhead": 5.2
+      }
+    },
+    "Swallow Fork Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Big Creek Trail": 0.0,
+        "Mount Sterling Ridge Trail": 4.0
+      },
+      "trailheads": null
+    },
+    "Mount Sterling Ridge Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Balsam Mountain Trail": 0.0,
+        "Pretty Hollow Gap Trail": 3.9,
+        "Swallow Fork Trail": 4.0,
+        "Mount Sterling Trail": 5.3,
+        "Baxter Creek Trail": 5.3
+      },
+      "trailheads": null
+    },
+    "Mount Sterling Trail": {
+      "landmarks": {
+        "Mount Sterling Tower": 0.0
+      },
+      "campgrounds": null,
+      "intersections": {
+        "Baxter Creek Trail": 0.0,
+        "Mount Sterling Ridge Trail": 0.0,
+        "Long Bunk Trail": 1.7
+      },
+      "trailheads": {
+        "Mount Sterling Gap Trailhead": 1.9
+      }
+    },
+    "Long Bunk Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Mount Sterling Trail": 0.0,
+        "Little Cataloochee Trail": 3.6
+      },
+      "trailheads": null
+    },
+    "Little Cataloochee Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Palmer Creek Trail": 0.8,
+        "Long Bunk Trail": 4.9
+      },
+      "trailheads": {
+        "Little Cataloochee East Trailhead": 5.9,
+        "Little Cataloochee Trailhead": 0.0
+      }
+    },
+    "Palmer Creek Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Pretty Hollow Gap Trail": 3.3,
+        "Little Cataloochee Trail": 4.1
+      },
+      "trailheads": {
+        "Palmer Creek Trailhead": 0.0
+      }
+    },
+    "Pretty Hollow Gap Trail": {
+      "landmarks": null,
+      "campgrounds": {
+        "39": 3.7
+      },
+      "intersections": {
+        "Palmer Creek Trail": 4.0
+      },
+      "trailheads": null
+    },
+    "Baxter Creek Trail": {
+      "landmarks": null,
+      "campgrounds": {
+        "38": 1.0
+      },
+      "intersections": {
+        "Mount Sterling Trail": 0.0,
+        "Mount Sterling Ridge Trail": 0.0
+      },
+      "trailheads": {
+        "Big Creek Trailhead": 6.1
+      }
+    },
+    "Chesnut Branch Trail": {
+      "landmarks": null,
+      "campgrounds": null,
+      "intersections": {
+        "Appalachian Trail": 0.0
+      },
+      "trailheads": {
+        "Chesnut Branch Trailhead": 2.1
+      }
+    },
+    "Appalachian Trail": {
+      "landmarks": {
+        "Charlies Bunion": -15.5
+      },
       "campgrounds": null,
       "intersections": {
         "Balsam Mountain Trail": -3.7,
@@ -132,7 +256,9 @@
         "Lower Mount Cammerer Trail": 9.1,
         "Chesnut Branch Trail": 10.1
       },
-      "trailheads": null
+      "trailheads": {
+        "Newfound Gap Trailhead": -19.4
+      }
     }
   }
 }

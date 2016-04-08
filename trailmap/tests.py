@@ -12,6 +12,7 @@ class TestMe(unittest.TestCase):
     def setUp(self):
         pass
 
+    @unittest.skip("Test needs updating. Node numbers will change as the trail system develops.")
     def test_Dijkstra_PercyWarner(self):
         with open(os.path.join(path_traildata, 'percywarner.pkl')) as f:
             g = pickle.load(f)
@@ -26,6 +27,7 @@ class TestMe(unittest.TestCase):
         self.assertSequenceEqual(results['path'], [7, 3, 2, 4, 8, 0, 1])
         print(results['path'])
 
+    @unittest.skip("Test needs updating. Node numbers will change as the trail system develops.")
     def test_Dijkstra_GSMNP(self):
         with open(os.path.join(path_traildata, 'gsmnp.pkl')) as f:
             g = pickle.load(f)
