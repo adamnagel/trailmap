@@ -64,9 +64,9 @@
             <md-toolbar class="md-primary" style="padding:16px;">
                 <h2 class="md-flex">Route</h2>
             </md-toolbar>
-
             <md-content>
-                <md-list class="md-dense" flex>
+
+                <md-list class="md-dense" layout="column" layout-align="start start">
                     <md-list-item class="md-3-line" ng-repeat="point_data in route">
                         <!--<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}"/>-->
 
@@ -74,7 +74,7 @@
                             <h3>{{ point_data.point }}</h3>
                             <h4>landmark</h4>
 
-                            <p>{{ point_data.distance }} mi</p>
+                            <p>{{ point_data.distance.toFixed(1) }} mi</p>
                         </div>
                     </md-list-item>
                 </md-list>
