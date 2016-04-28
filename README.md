@@ -39,6 +39,7 @@ http://www.summitpost.org/luftee-knob/401884
 Graph Resources:
 http://www.graphviz.org/pdf/neatoguide.pdf
 http://networkx.github.io
+http://geojson.org/
 
 ## Stuff I Decided
 
